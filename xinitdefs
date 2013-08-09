@@ -1,0 +1,51 @@
+# System wide settings
+sysmodmap=/etc/lightdm/Xmodmap
+sysresources=/etc/lightdm/Xresources
+
+# User settings
+usermodmap=$HOME/.Xmodmap
+userresources=$HOME/.Xresources
+userdefaults=$HOME/.Xdefaults
+
+# Merge in defaults
+if [ -f $sysresources ]; then
+    xrdb -nocpp -merge $sysresources
+fi
+
+if [ -f $userresources ]; then
+    xrdb -nocpp -merge $userresources
+elif [ -f $userdefaults ]; then
+    xrdb -nocpp -merge $userdefaults
+fi
+
+if [ -f $sysmodmap ]; then
+    xmodmap $sysmodmap
+fi
+if [ -f $usermodmap ]; then
+    xmodmap $usermodmap
+fi
+
+if [ -z "$XDG_CONFIG_HOME" ]; then
+    XDG_CONFIG_HOME=$HOME/.config
+fi
+[ -d "$XDG_CONFIG_HOME" ] || mkdir "$XDG_CONFIG_HOME"
+
+if [ -z "$XDG_CACHE_HOME" ]; then
+    XDG_CACHE_HOME=$HOME/.cache
+fi
+[ -d "$XDG_CACHE_HOME" ] || mkdir "$XDG_CACHE_HOME"
+
+if [ -x /usr/bin/xdg-user-dirs-update ]; then
+    xdg-user-dirs-update
+fi
+
+# Prefix launch of session with ssh-agent if available and not already running.
+SSH_AGENT=
+if [ -z "$SSH_AGENT_PID" ] && [ -x /usr/bin/ssh-agent ]; then
+    if [ "x$TMPDIR" != "x" ]; then
+	SSH_AGENT="/usr/bin/ssh-agent env TMPDIR=$TMPDIR"
+    else
+	SSH_AGENT="/usr/bin/ssh-agent"
+    fi
+fi
+

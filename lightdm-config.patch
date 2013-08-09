@@ -1,0 +1,42 @@
+diff -aurN lightdm-1.7.9.orig/data/lightdm.conf lightdm-1.7.9/data/lightdm.conf
+--- lightdm-1.7.9.orig/data/lightdm.conf	2013-08-09 23:16:28.989165283 +0200
++++ lightdm-1.7.9/data/lightdm.conf	2013-08-09 23:19:11.786258242 +0200
+@@ -18,14 +18,14 @@
+ #
+ [LightDM]
+ #start-default-seat=true
+-#greeter-user=lightdm
++greeter-user=xdm
+ #minimum-display-number=0
+-#minimum-vt=7
++minimum-vt=1
+ #lock-memory=true
+ #user-authority-in-system-dir=false
+ #guest-account-script=guest-account
+ #log-directory=/var/log/lightdm
+-#run-directory=/var/run/lightdm
++run-directory=/run/lightdm
+ #cache-directory=/var/cache/lightdm
+ #sessions-directory=/usr/share/lightdm/sessions:/usr/share/xsessions
+ #remote-sessions-directory=/usr/share/lightdm/remote-sessions
+@@ -87,7 +87,7 @@
+ #user-session=default
+ #allow-guest=true
+ #guest-session=UNIMPLEMENTED
+-#session-wrapper=lightdm-session
++session-wrapper=/etc/lightdm/xsession
+ #greeter-wrapper=
+ #display-setup-script=
+ #greeter-setup-script=
+diff -aurN lightdm-1.7.9.orig/data/users.conf lightdm-1.7.9/data/users.conf
+--- lightdm-1.7.9.orig/data/users.conf	2013-08-09 23:16:28.989165283 +0200
++++ lightdm-1.7.9/data/users.conf	2013-08-09 23:19:23.273688516 +0200
+@@ -9,6 +9,6 @@
+ # hidden-shells = Shells that indicate a user cannot login
+ #
+ [UserAccounts]
+-minimum-uid=500
++minimum-uid=1000
+ hidden-users=nobody nobody4 noaccess
+-hidden-shells=/bin/false /usr/sbin/nologin
++hidden-shells=/usr/bin/false /usr/sbin/nologin
