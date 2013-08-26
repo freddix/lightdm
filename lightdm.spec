@@ -1,13 +1,16 @@
 Summary:	The standard display manager for the X.org X server
 Name:		lightdm
-Version:	1.7.9
-Release:	2
+Version:	1.7.11
+Release:	3
 License:	GPL v3
 Group:		X11/Applications
 Source0:	https://launchpad.net/lightdm/1.8/%{version}/+download/%{name}-%{version}.tar.xz
-# Source0-md5:	2015135289b7e5fa8847c83600c5c3f1
+# Source0-md5:	4cc23351c1e04dd9b4951ad1f7d3a1d3
 Source1:	%{name}.service
 Source2:	%{name}.tmpfiles
+Source3:	%{name}.rules
+Source4:	%{name}.pamd
+Source5:	%{name}-autologin.pamd
 Source10:	Xresources
 Source11:	xinitdefs
 Source12:	xsession
@@ -99,6 +102,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/var/{cache,log}/lightdm \
 	$RPM_BUILD_ROOT%{_datadir}/lightdm/remote-sessions	\
 	$RPM_BUILD_ROOT%{_datadir}/lightdm/sessions	\
+	$RPM_BUILD_ROOT%{_datadir}/polkit-1/rules.d	\
 	$RPM_BUILD_ROOT%{_datadir}/xgreeters	\
 	$RPM_BUILD_ROOT%{systemdtmpfilesdir}	\
 	$RPM_BUILD_ROOT%{systemdunitdir}	\
@@ -112,6 +116,9 @@ install -d $RPM_BUILD_ROOT/var/{cache,log}/lightdm \
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{systemdunitdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{systemdtmpfilesdir}/lightdm.conf
+install %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/polkit-1/rules.d/lightdm.rules
+install %{SOURCE4} $RPM_BUILD_ROOT/etc/pam.d/lightdm
+install %{SOURCE5} $RPM_BUILD_ROOT/etc/pam.d/lightdm-autologin
 
 install %{SOURCE10} %{SOURCE11} %{SOURCE12} \
 	$RPM_BUILD_ROOT%{_sysconfdir}/lightdm
@@ -173,6 +180,7 @@ fi
 %dir %{_datadir}/lightdm/sessions
 %dir %{_datadir}/xgreeters
 
+%{_datadir}/polkit-1/rules.d/lightdm.rules
 %{systemdtmpfilesdir}/lightdm.conf
 %{systemdunitdir}/lightdm.service
 

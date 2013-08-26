@@ -1,0 +1,27 @@
+# Authorization is not required for xdm
+auth       required    pam_permit.so
+
+# This module parses environment configuration file(s)
+# and also allows you to use an extended config
+# file /etc/security/pam_env.conf.
+#
+# parsing /etc/environment needs "readenv=1"
+session    required     pam_env.so readenv=1
+# locale variables are also kept into /etc/locale.conf
+session    required     pam_env.so readenv=1 envfile=/etc/locale.conf
+
+# sets the loginuid process attribute for the process
+# that was authenticated
+session    required     pam_loginuid.so
+
+# initialize session keyring
+session    optional     pam_keyinit.so force revoke
+
+# configure namespace for a session
+session    required	pam_namespace.so
+
+# Standard Un*x account and session
+account    include      common-account
+password   include      common-password
+session    include      common-session
+
