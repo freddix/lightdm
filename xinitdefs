@@ -25,6 +25,13 @@ if [ -f $usermodmap ]; then
     xmodmap $usermodmap
 fi
 
+# Add /usr/share/fonts/local to font path if necessary
+if [ -f /usr/share/fonts/local/fonts.dir ]; then
+    xset fp default
+    xset +fp /usr/share/fonts/local
+    xset fp rehash
+fi
+
 if [ -z "$XDG_CONFIG_HOME" ]; then
     XDG_CONFIG_HOME=$HOME/.config
 fi
@@ -39,7 +46,7 @@ if [ -x /usr/bin/xdg-user-dirs-update ]; then
     xdg-user-dirs-update
 fi
 
-# Prefix launch of session with ssh-agent if available and not already running.
+# Prefix launch of session with ssh-agent if available and not already running
 SSH_AGENT=
 if [ -z "$SSH_AGENT_PID" ] && [ -x /usr/bin/ssh-agent ]; then
     if [ "x$TMPDIR" != "x" ]; then
