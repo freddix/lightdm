@@ -1,4 +1,4 @@
-# System wide settings
+# System-wide settings
 sysmodmap=/etc/lightdm/Xmodmap
 sysresources=/etc/lightdm/Xresources
 
@@ -44,15 +44,5 @@ fi
 
 if [ -x /usr/bin/xdg-user-dirs-update ]; then
     xdg-user-dirs-update
-fi
-
-# Prefix launch of session with ssh-agent if available and not already running
-SSH_AGENT=
-if [ -z "$SSH_AGENT_PID" ] && [ -x /usr/bin/ssh-agent ]; then
-    if [ "x$TMPDIR" != "x" ]; then
-	SSH_AGENT="/usr/bin/ssh-agent env TMPDIR=$TMPDIR"
-    else
-	SSH_AGENT="/usr/bin/ssh-agent"
-    fi
 fi
 
