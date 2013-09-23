@@ -1,9 +1,6 @@
-auth       requisite    pam_nologin.so
-
+#%PAM-1.0
 auth       include      common-auth
 account    include      common-account
 password   include      common-password
-
-session    required     pam_namespace.so
+session    required     pam_loginuid.so
 session    include      common-session
-
