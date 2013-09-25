@@ -4,5 +4,4 @@ auth       required     pam_env.so
 auth       required     pam_env.so envfile=/etc/locale.conf
 account    include      common-account
 password   include      common-password
-session    required     pam_loginuid.so
 session    include      common-session
