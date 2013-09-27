@@ -1,0 +1,15 @@
+Gtk/ButtonImages              1
+Gtk/CursorThemeName           "OpenZone_Black"
+Gtk/FontName                  "Droid Sans 10"
+Gtk/MenuImages                0
+Gtk/ToolbarIconSize           2
+Gtk/ToolbarStyle              "Icons"
+Net/EnableEventSounds         0
+Net/EnableInputFeedbackSounds 0
+Net/FallbackIconTheme         "Cheser"
+Net/IconThemeName             "Cheser"
+Net/ThemeName                 "Greybird"
+Xft/Antialias                 1
+Xft/HintStyle                 "hintslight"
+Xft/Hinting                   1
+Xft/RGBA                      "rgb"
