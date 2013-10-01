@@ -1,6 +1,6 @@
 diff -aurN lightdm-1.7.17.orig/data/lightdm.conf lightdm-1.7.17/data/lightdm.conf
---- lightdm-1.7.17.orig/data/lightdm.conf	2013-09-26 15:20:58.103715600 +0200
-+++ lightdm-1.7.17/data/lightdm.conf	2013-09-26 15:26:20.625077209 +0200
+--- lightdm-1.7.17.orig/data/lightdm.conf	2013-10-01 22:28:39.599853014 +0200
++++ lightdm-1.7.17/data/lightdm.conf	2013-10-01 22:29:54.978749118 +0200
 @@ -18,14 +18,14 @@
  #
  [LightDM]
@@ -19,7 +19,7 @@ diff -aurN lightdm-1.7.17.orig/data/lightdm.conf lightdm-1.7.17/data/lightdm.con
  #cache-directory=/var/cache/lightdm
  #sessions-directory=/usr/share/lightdm/sessions:/usr/share/xsessions
  #remote-sessions-directory=/usr/share/lightdm/remote-sessions
-@@ -93,10 +93,10 @@
+@@ -93,9 +93,9 @@
  #user-session=default
  #allow-guest=true
  #guest-session=UNIMPLEMENTED
@@ -27,15 +27,13 @@ diff -aurN lightdm-1.7.17.orig/data/lightdm.conf lightdm-1.7.17/data/lightdm.con
 +session-wrapper=/etc/lightdm/xsession
  #greeter-wrapper=
 -#display-setup-script=
--#greeter-setup-script=
-+display-setup-script=sh -c 'xsettingsd -c /etc/lightdm/xsettingsd &'
-+greeter-setup-script=
++display-setup-script=xrdb -merge -nocpp /etc/lightdm/Xresources
+ #greeter-setup-script=
  #session-setup-script=
  #session-cleanup-script=
- #autologin-guest=false
 diff -aurN lightdm-1.7.17.orig/data/users.conf lightdm-1.7.17/data/users.conf
---- lightdm-1.7.17.orig/data/users.conf	2013-09-26 15:20:58.103715600 +0200
-+++ lightdm-1.7.17/data/users.conf	2013-09-26 15:23:39.951918923 +0200
+--- lightdm-1.7.17.orig/data/users.conf	2013-10-01 22:28:39.599853014 +0200
++++ lightdm-1.7.17/data/users.conf	2013-10-01 22:29:03.045753820 +0200
 @@ -9,6 +9,6 @@
  # hidden-shells = Shells that indicate a user cannot login
  #

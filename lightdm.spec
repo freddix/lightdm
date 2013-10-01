@@ -1,7 +1,7 @@
 Summary:	The standard display manager for the X.org X server
 Name:		lightdm
 Version:	1.7.17
-Release:	2
+Release:	3
 License:	GPL v3
 Group:		X11/Applications
 Source0:	https://launchpad.net/lightdm/1.7/%{version}/+download/%{name}-%{version}.tar.xz
@@ -15,7 +15,6 @@ Source6:	%{name}-greeter.pamd
 Source10:	Xresources
 Source11:	xinitdefs
 Source12:	xsession
-Source13:	xsettingsd
 Patch0:		%{name}-config.patch
 URL:		https://launchpad.net/lightdm
 BuildRequires:	autoconf
@@ -41,7 +40,6 @@ Requires:	xorg-app-xmodmap
 Requires:	xorg-app-xrdb
 Requires:	xorg-theme-xcursor-OpenZone
 Requires:	xorg-xserver-server
-Requires:	xsettingsd
 Provides:	group(xdm)
 Provides:	user(xdm)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -124,7 +122,7 @@ install %{SOURCE4} $RPM_BUILD_ROOT/etc/pam.d/lightdm
 install %{SOURCE5} $RPM_BUILD_ROOT/etc/pam.d/lightdm-autologin
 install %{SOURCE6} $RPM_BUILD_ROOT/etc/pam.d/lightdm-greeter
 
-install %{SOURCE10} %{SOURCE11} %{SOURCE12} %{SOURCE13} \
+install %{SOURCE10} %{SOURCE11} %{SOURCE12} \
 	$RPM_BUILD_ROOT%{_sysconfdir}/lightdm
 
 %find_lang %{name} --with-gnome
@@ -172,9 +170,7 @@ fi
 
 %attr(755,root,root) %{_sysconfdir}/lightdm/xsession
 %{_sysconfdir}/lightdm/xinitdefs
-
 %{_sysconfdir}/lightdm/Xresources
-%{_sysconfdir}/lightdm/xsettingsd
 
 %{_sysconfdir}/dbus-1/system.d/org.freedesktop.DisplayManager.conf
 
