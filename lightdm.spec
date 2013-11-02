@@ -1,11 +1,11 @@
 Summary:	The standard display manager for the X.org X server
 Name:		lightdm
-Version:	1.8.2
+Version:	1.8.3
 Release:	1
 License:	GPL v3
 Group:		X11/Applications
 Source0:	https://launchpad.net/lightdm/1.8/%{version}/+download/%{name}-%{version}.tar.xz
-# Source0-md5:	0994ff490184e57d0cd465d2259dbc9a
+# Source0-md5:	06875ac49aac230def85fa5bd07cdf41
 Source1:	%{name}.service
 Source2:	%{name}.tmpfiles
 Source3:	%{name}.rules
