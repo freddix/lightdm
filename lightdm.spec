@@ -1,11 +1,11 @@
 Summary:	The standard display manager for the X.org X server
 Name:		lightdm
-Version:	1.8.3
+Version:	1.9.5
 Release:	1
 License:	GPL v3
 Group:		X11/Applications
-Source0:	https://launchpad.net/lightdm/1.8/%{version}/+download/%{name}-%{version}.tar.xz
-# Source0-md5:	06875ac49aac230def85fa5bd07cdf41
+Source0:	https://launchpad.net/lightdm/1.9/%{version}/+download/%{name}-%{version}.tar.xz
+# Source0-md5:	22f4b8244323ccdaf40667ed964112b9
 Source1:	%{name}.service
 Source2:	%{name}.tmpfiles
 Source3:	%{name}.rules
@@ -43,6 +43,8 @@ Requires:	xorg-xserver-server
 Provides:	group(xdm)
 Provides:	user(xdm)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_libexecdir	%{_libdir}/lightdm
 
 %description
 LightDM is a cross-desktop display manager that aims is to be the
@@ -154,10 +156,9 @@ fi
 %doc NEWS
 %attr(755,root,root) %{_bindir}/dm-tool
 %attr(755,root,root) %{_sbindir}/lightdm
-%dir %{_libdir}/lightdm
-%attr(755,root,root) %{_libdir}/lightdm/gdmflexiserver
-%attr(755,root,root) %{_libdir}/lightdm/lightdm-guest-session-wrapper
-%attr(755,root,root) %{_libdir}/lightdm/lightdm-set-defaults
+
+%dir %{_libexecdir}
+%attr(755,root,root) %{_libexecdir}/lightdm-guest-session
 
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/lightdm
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/lightdm-autologin
@@ -186,7 +187,8 @@ fi
 %{systemdtmpfilesdir}/lightdm.conf
 %{systemdunitdir}/lightdm.service
 
-%{_mandir}/man1/lightdm*
+%{_mandir}/man1/dm-tool.1.*
+%{_mandir}/man1/lightdm*1.*
 
 %files libs
 %defattr(644,root,root,755)
