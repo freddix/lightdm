@@ -1,11 +1,11 @@
 Summary:	The standard display manager for the X.org X server
 Name:		lightdm
-Version:	1.9.5
-Release:	2
+Version:	1.9.6
+Release:	1
 License:	GPL v3
 Group:		X11/Applications
 Source0:	https://launchpad.net/lightdm/1.9/%{version}/+download/%{name}-%{version}.tar.xz
-# Source0-md5:	22f4b8244323ccdaf40667ed964112b9
+# Source0-md5:	23abd39d48e95a698013f5ab2d69ee61
 Source1:	%{name}.service
 Source2:	%{name}.tmpfiles
 Source3:	%{name}.rules
