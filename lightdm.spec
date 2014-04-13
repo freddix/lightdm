@@ -1,7 +1,7 @@
 Summary:	The standard display manager for the X.org X server
 Name:		lightdm
 Version:	1.10.0
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		X11/Applications
 Source0:	https://launchpad.net/lightdm/1.10/%{version}/+download/%{name}-%{version}.tar.xz
@@ -103,6 +103,7 @@ lightdm API documentation.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/var/{cache,log}/lightdm \
+	$RPM_BUILD_ROOT/var/lib/lightdm-data	\
 	$RPM_BUILD_ROOT%{_datadir}/lightdm/remote-sessions	\
 	$RPM_BUILD_ROOT%{_datadir}/lightdm/sessions	\
 	$RPM_BUILD_ROOT%{_datadir}/polkit-1/rules.d	\
@@ -172,12 +173,12 @@ fi
 %attr(755,root,root) %{_sysconfdir}/lightdm/xsession
 %{_sysconfdir}/lightdm/xinitdefs
 %{_sysconfdir}/lightdm/Xresources
-
 %{_sysconfdir}/dbus-1/system.d/org.freedesktop.DisplayManager.conf
 
 %dir %attr(710,root,root) /var/cache/lightdm
 %dir %attr(710,root,root) /var/log/lightdm
 %dir %attr(750,xdm,xdm) /home/services/xdm
+%dir %attr(750,xdm,xdm) /var/lib/lightdm-data
 %dir %{_datadir}/lightdm
 %dir %{_datadir}/lightdm/remote-sessions
 %dir %{_datadir}/lightdm/sessions
