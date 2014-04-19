@@ -1,6 +1,6 @@
 diff -aurN lightdm-1.10.0.orig/data/lightdm.conf lightdm-1.10.0/data/lightdm.conf
---- lightdm-1.10.0.orig/data/lightdm.conf	2014-04-13 21:39:27.935896078 +0200
-+++ lightdm-1.10.0/data/lightdm.conf	2014-04-13 21:43:25.851224900 +0200
+--- lightdm-1.10.0.orig/data/lightdm.conf	2014-04-19 12:25:58.758401229 +0200
++++ lightdm-1.10.0/data/lightdm.conf	2014-04-19 12:27:08.214341459 +0200
 @@ -29,6 +29,9 @@
  #sessions-directory=/usr/share/lightdm/sessions:/usr/share/xsessions
  #remote-sessions-directory=/usr/share/lightdm/remote-sessions
@@ -11,20 +11,18 @@ diff -aurN lightdm-1.10.0.orig/data/lightdm.conf lightdm-1.10.0/data/lightdm.con
  
  #
  # Seat defaults
-@@ -69,7 +72,9 @@
- # autologin-session = Session to load for automatic login (overrides user-session)
- # autologin-in-background = True if autologin session should not be immediately activated
- # exit-on-failure = True if the daemon should exit if this seat fails
--#
+@@ -107,6 +110,8 @@
+ #autologin-in-background=false
+ #autologin-session=UNIMPLEMENTED
+ #exit-on-failure=false
 +session-wrapper = /etc/lightdm/xsession
-+display-setup-script=xrdb -merge -nocpp /etc/lightdm/Xresources
-+
- [SeatDefaults]
- #type=xlocal
- #xdg-seat=seat0
++display-setup-script = xrdb -merge -nocpp /etc/lightdm/Xresources
+ 
+ #
+ # Seat configuration
 diff -aurN lightdm-1.10.0.orig/data/users.conf lightdm-1.10.0/data/users.conf
---- lightdm-1.10.0.orig/data/users.conf	2014-04-13 21:39:27.935896078 +0200
-+++ lightdm-1.10.0/data/users.conf	2014-04-13 21:43:54.392286175 +0200
+--- lightdm-1.10.0.orig/data/users.conf	2014-04-19 12:25:58.758401229 +0200
++++ lightdm-1.10.0/data/users.conf	2014-04-19 12:26:28.546186695 +0200
 @@ -9,6 +9,6 @@
  # hidden-shells = Shells that indicate a user cannot login
  #
