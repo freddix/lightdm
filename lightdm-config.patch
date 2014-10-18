@@ -26,7 +26,7 @@ diff -aurN lightdm-1.10.0.orig/data/users.conf lightdm-1.10.0/data/users.conf
 @@ -9,6 +9,6 @@
  # hidden-shells = Shells that indicate a user cannot login
  #
- [UserAccounts]
+ [UserList]
 -minimum-uid=500
 +minimum-uid=1000
  hidden-users=nobody nobody4 noaccess

@@ -1,11 +1,11 @@
 Summary:	The standard display manager for the X.org X server
 Name:		lightdm
-Version:	1.10.0
-Release:	3
+Version:	1.12.1
+Release:	2
 License:	GPL v3
 Group:		X11/Applications
-Source0:	https://launchpad.net/lightdm/1.10/%{version}/+download/%{name}-%{version}.tar.xz
-# Source0-md5:	004a9b70674a37d0c950ac54f87d686f
+Source0:	https://launchpad.net/lightdm/1.12/%{version}/+download/%{name}-%{version}.tar.xz
+# Source0-md5:	eafd71a88cf03eec055e9cf8f5bac316
 Source1:	%{name}.service
 Source2:	%{name}.tmpfiles
 Source3:	%{name}.rules
@@ -117,6 +117,7 @@ install -d $RPM_BUILD_ROOT/var/{cache,log}/lightdm \
 
 %{__rm} -r $RPM_BUILD_ROOT/etc/{apparmor.d,init}
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{lb,wae}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{systemdunitdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{systemdtmpfilesdir}/lightdm.conf
